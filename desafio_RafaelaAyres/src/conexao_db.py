@@ -1,7 +1,14 @@
+import os
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_engine():
+    User = os.getenv("User")
+    Pass = os.getenv("Pass")
+    IP = os.getenv("IP")
+    
     return create_engine(
-        "mysql+pymysql://looqbox-challenge:looq-challenge@35.199.115.174/looqbox-challenge"
+        f"mysql+pymysql://{User}:{Pass}@{IP}/looqbox-challenge"
     )
-
